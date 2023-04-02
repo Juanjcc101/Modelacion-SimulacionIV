@@ -1,0 +1,36 @@
+%Punto 18
+data5 = importdata('data5.mat');
+
+Mean5 = mean(data5);
+c5 = data5 - Mean5;
+
+cov5 = cov(c5);
+[vector5, valor5] = eig(cov5);
+
+[~, idx] = sort(diag(valor5), 'descend');
+v1 = vector5(:, idx(1));
+v2 = vector5(:, idx(2));
+
+pro1 = c5 * v1;
+pro2 = c5 * [v1, v2];
+
+plot(pro1(:,1),pro2(:,2),'o')
+title('data5');
+
+data12 = importdata('data12.mat');
+
+Mean12 = mean(data12);
+c12 = data12 - Mean12;
+
+cov12 = cov(c12);
+[vector12, valor12] = eig(cov12)
+
+[~, idx] = sort(diag(valor12), 'descend');
+v1 = vector12(:, idx(1));
+v2 = vector12(:, idx(2));
+
+pro1 = c12 * v1;
+pro2 = c12 * [v1, v2];
+
+plot(pro1(:,1),pro2(:,2),'o')
+title('data12');
